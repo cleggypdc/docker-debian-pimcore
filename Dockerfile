@@ -20,6 +20,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
  pngnq pngcrush xvfb cabextract libfcgi0ldbl poppler-utils xfonts-75dpi \
  mysql-server-5.6 redis-server postfix
 
+RUN apt-get -y -t wheezy-backports install libreoffice python-uno libreoffice-math
+
 # set root password
 RUN echo "root:root" | chpasswd
 
