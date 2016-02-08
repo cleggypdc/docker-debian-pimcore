@@ -56,7 +56,7 @@ RUN cat /tmp/redis.conf >> /etc/redis/redis.conf
 #ADD install-ffmpeg.sh /tmp/install-ffmpeg.sh
 #ADD install-optimizers.sh /tmp/install-optimizers.sh
 
-RUN chmod 777 /tmp/*.sh
+#RUN chmod 755 /tmp/*.sh
 #RUN /tmp/install-ghostscript.sh
 #RUN /tmp/install-ffmpeg.sh
 #RUN /tmp/install-optimizers.sh
