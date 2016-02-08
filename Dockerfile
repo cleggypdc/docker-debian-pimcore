@@ -69,9 +69,10 @@ RUN chmod 755 /*.sh
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # ports
-EXPOSE 80 443
+EXPOSE 80
 
 # volumes,
-VOLUME ["/var/www", "/var/lib/mysql", "/var/log"]
+# uncomment if you want to add volumes to the container, for persistent storage
+# VOLUME ["/var/www", "/var/lib/mysql", "/var/log"]
 
 CMD ["/run.sh"]
