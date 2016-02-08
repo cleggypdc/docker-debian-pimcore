@@ -30,9 +30,12 @@ RUN rm /etc/apache2/sites-enabled/*
 RUN rm /var/www/*
 
 #create volume directory
-RUN mkdir -p /var/www/website/var
+ADD success.html /var/www/success.html
 RUN chown -R www-data:www-data /var/www
 ADD vhost.conf /etc/apache2/sites-enabled/000-default
+
+# add a success html page for testing it works
+
 
 # set root password
 # DO NOT UNCOMMENT THIS IS PRODUCTION
