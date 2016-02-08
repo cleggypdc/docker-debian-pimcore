@@ -29,13 +29,10 @@ RUN a2dismod cgi autoindex
 RUN rm /etc/apache2/sites-enabled/*
 RUN rm /var/www/*
 
-#create volume directory
+# add a success html page for testing it works
 ADD success.html /var/www/success.html
 RUN chown -R www-data:www-data /var/www
 ADD vhost.conf /etc/apache2/sites-enabled/000-default
-
-# add a success html page for testing it works
-
 
 # set root password
 # DO NOT UNCOMMENT THIS IS PRODUCTION
@@ -54,15 +51,15 @@ ADD redis.conf /tmp/redis.conf
 RUN cat /tmp/redis.conf >> /etc/redis/redis.conf
 
 # install tools
-RUN wget "http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb" -O wkhtmltopdf-0.12.deb && dpkg -i wkhtmltopdf-0.12.deb
-ADD install-ghostscript.sh /tmp/install-ghostscript.sh
-ADD install-ffmpeg.sh /tmp/install-ffmpeg.sh
-ADD install-optimizers.sh /tmp/install-optimizers.sh
+#RUN wget "http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-wheezy-amd64.deb" -O wkhtmltopdf-0.12.deb && dpkg -i wkhtmltopdf-0.12.deb
+#ADD install-ghostscript.sh /tmp/install-ghostscript.sh
+#ADD install-ffmpeg.sh /tmp/install-ffmpeg.sh
+#ADD install-optimizers.sh /tmp/install-optimizers.sh
 
 RUN chmod 777 /tmp/*.sh
-RUN /tmp/install-ghostscript.sh
-RUN /tmp/install-ffmpeg.sh
-RUN /tmp/install-optimizers.sh
+#RUN /tmp/install-ghostscript.sh
+#RUN /tmp/install-ffmpeg.sh
+#RUN /tmp/install-optimizers.sh
 
 # setup startup scripts
 ADD start-apache.sh /start-apache.sh
