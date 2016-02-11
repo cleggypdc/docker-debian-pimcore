@@ -42,6 +42,7 @@ ADD vhost.conf /etc/apache2/sites-enabled/000-default
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
 
 # configure php-fpm
+ADD php.ini /etc/php5/fpm/php.ini
 RUN rm -r /etc/php5/cli/php.ini && ln -s /etc/php5/fpm/php.ini /etc/php5/cli/php.ini
 RUN mv /etc/php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf.dist
 ADD www-data.conf /etc/php5/fpm/pool.d/www-data.conf
