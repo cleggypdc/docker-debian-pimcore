@@ -61,6 +61,13 @@ RUN /tmp/install-ghostscript.sh
 RUN /tmp/install-ffmpeg.sh
 RUN /tmp/install-optimizers.sh
 
+# install wkhtmltopdf
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install /
+wkhtmltopdf openssl build-essential xorg libssl-dev xvfb
+
+ADD wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf.sh
+RUN chmod a+x /usr/local/bin/wkhtmltopdf.sh
+
 # setup startup scripts
 ADD start-apache.sh /start-apache.sh
 ADD start-php-fpm.sh /start-php-fpm.sh
