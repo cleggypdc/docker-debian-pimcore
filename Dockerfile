@@ -62,7 +62,7 @@ RUN /tmp/install-ffmpeg.sh
 RUN /tmp/install-optimizers.sh
 
 # install wkhtmltopdf
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install /
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 wkhtmltopdf openssl build-essential xorg libssl-dev xvfb
 
 ADD wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf.sh
